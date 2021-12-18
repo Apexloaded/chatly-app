@@ -15,7 +15,7 @@ export default function Home() {
         <title>Chatly</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='flex-1 justify-between border-r h-screen flex flex-col border-l'>
+      <div className='flex-1 justify-between border-r overflow-hidden h-screen flex flex-col border-l'>
         <Header />
         <Messages />
       </div>

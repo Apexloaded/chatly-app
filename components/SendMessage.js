@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { PaperAirplaneIcon } from '@heroicons/react/outline';
 import { useMoralis } from 'react-moralis';
 
@@ -10,12 +10,6 @@ function SendMessage({ endOfMsgRef }) {
     const scrollToBottom = (prop) => {
         endOfMsgRef.current.scrollIntoView(prop);
     }
-
-    useEffect(() => {
-        if(endOfMsgRef.current) {
-            scrollToBottom();
-        }
-    }, []);
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -31,7 +25,7 @@ function SendMessage({ endOfMsgRef }) {
         })
         .then(
             (msg) => {
-                scrollToBottom({ behavior: "smooth" });
+                scrollToBottom({ behavior: "smooth", block: "start" });
                 //endOfMsgRef.current.scrollIntoView({ behavior: "smooth" });
             },
             (err) => {
@@ -40,6 +34,7 @@ function SendMessage({ endOfMsgRef }) {
         )
 
         setMessage('');
+        scrollToBottom({ behavior: "smooth", block: "start" });
     };
 
 

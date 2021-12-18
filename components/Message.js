@@ -11,7 +11,7 @@ function Message({ message }) {
 
     return (
         <div className={`flex flex-col space-x-2 my-5 ${isUserMessage ? 'justify-end items-end' : 'items-start'}`}>
-            <div className={`space-x-4 px-3 py-1 rounded-2xl ${isUserMessage ? 'rounded-br-none bg-green-600 text-white' : 'rounded-bl-none bg-gray-300'}`}>
+            <div className={`space-x-4 px-3 py-1 max-w-sm rounded-2xl ${isUserMessage ? 'rounded-br-none bg-green-600 text-white' : 'rounded-bl-none bg-gray-300'}`}>
                 <p>{message.get('message')}</p>
             </div>
             <TimeAgo 
