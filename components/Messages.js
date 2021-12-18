@@ -9,7 +9,7 @@ const MINT_DURATION = 15;
 function Messages() {
     const endOfMsgRef = useRef(null);
     const [isTyping, setIsTyping] = useState('');
-    const isUserMessage = message.get('ethAddress') === user.get('ethAddress');
+    //const isUserMessage = message.get('ethAddress') === user.get('ethAddress');
 
     const [msgRef, mutationRecord] = useMutationObserver({
         attributes: true,
