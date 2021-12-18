@@ -3,13 +3,25 @@ import { PaperAirplaneIcon } from '@heroicons/react/outline';
 import { useMoralis } from 'react-moralis';
 
 
-function SendMessage({ endOfMsgRef }) {
+function SendMessage({ endOfMsgRef, childToParent }) {
     const { user, Moralis } = useMoralis();
     const [message, setMessage] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
 
     const scrollToBottom = (prop) => {
         endOfMsgRef.current.scrollIntoView(prop);
     }
+
+    const setIstyping = (e) => {
+        setMessage(e.target.value);
+        if(e.target.value.length > 0) {
+            setIsTyping(true);
+        } else {
+            setIsTyping(false);
+        }
+    }
+
+    childToParent(isTyping);
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -46,7 +58,8 @@ function SendMessage({ endOfMsgRef }) {
                         type="text"
                         className="w-full outline-none py-3"
                         value={message}
-                        onChange={e => setMessage(e.target.value)}
+                        onChange={e => setIstyping(e)}
+                        onBlur={e => setIsTyping(false)}
                         placeholder={`Send Message ${user.getUsername()}`} 
                     />
                     <button type='submit' onClick={sendMessage}>
